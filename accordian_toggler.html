@@ -1,5 +1,5 @@
 
-<!--Allows the Toggling of Accordians DIVI -->
+<!--Allows the Toggling of Accordians DIVI - Add code to the < head > of your blog Section in Divi Theme Builder-->
 <script>
   jQuery(function ($) {
     $(".et_pb_toggle_title").click(function () {
@@ -21,3 +21,10 @@
     });
   });
 </script>
+
+<!--To add a "close" icon to the open toggles, add to Divi Custom CSS box.-->
+
+.et_pb_accordion .et_pb_toggle_open .et_pb_toggle_title:before {
+    display: block!important;
+    content: "\e04f" !important;
+}
