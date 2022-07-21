@@ -1,0 +1,54 @@
+<script>
+    const siteNum = "3";
+    const flipperButtons = document.getElementsByClassName("flipper_button");
+    const flipperTexts = document.getElementsByClassName("flipper_text");
+    const flipperImage = document
+        .getElementById("flipper_image")
+        .getElementsByTagName("img")[0];
+
+    $(document).ready(function () {
+        reset();
+        flipperButtons[0].classList.add("active");
+        flipperTexts[0].classList.remove("inactive");
+        flipperTexts[0].classList.add("active");
+        flipperImage.srcset = "/wp-content/uploads/sites/" + siteNum + "/flipper_image1.jpg";
+        for (let i = 0; i < flipperButtons.length; i++) {
+            flipperButtons[i].addEventListener(
+                "click",
+                function () {
+                    changeImage(i);
+                },
+                false
+            );
+        }
+    });
+
+    function reset() {
+        for (let i = 0; i < flipperTexts.length; i++) {
+            flipperTexts[i].classList.add("inactive");
+            if (flipperButtons[i].classList.contains("active")) {
+                flipperButtons[i].classList.remove("active");
+            }
+            if (flipperTexts[i].classList.contains("active")) {
+                flipperTexts[i].classList.remove("active");
+                flipperTexts[i].classList.add("inactive");
+            }
+            if (flipperImage.classList.contains("image" + i)) {
+                flipperImage.classList.remove("image" + i);
+            }
+        }
+    }
+
+    function changeImage(i) {
+        reset();
+        flipperButtons[i].classList.add("active");
+        flipperTexts[i].classList.remove("inactive");
+        flipperTexts[i].classList.add("active");
+        flipperImage.srcset =
+            "/wp-content/uploads/sites/" +
+            siteNum +
+            "/flipper_image" +
+            (i + 1) +
+            ".jpg";
+    }
+</script>
