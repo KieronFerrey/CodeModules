@@ -1,0 +1,8 @@
+<!--JS to allow a button to open the tawk.io chatbot-->
+<script>
+  $(document).ready(function () {
+    $("#contactUsButton").click(function () {
+      event.preventDefault(), window.Tawk_API.toggle();
+    });
+  });
+</script>

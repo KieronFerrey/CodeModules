@@ -1,66 +1,73 @@
+<!--CHANGE IMAGE AS YOU SCROLL DOWN THE PAGE, ALSO ON DIVI CLOUD-->
+
 <script>
-    const scrollItems = document.querySelectorAll('.scrollItem');
-    const scrollimageUrl = "/wp-content/uploads/sites/3/scrollImage";
-    const scrollimage = document.getElementById("scrollImage").getElementsByTagName("img")[0];
-    const scrollBackgroundImage = document.getElementById("scrollImage");
-    var prevScrollImage;
-    var scrollImageSource;
+  const scrollItems = document.querySelectorAll(".scrollItem");
+  const scrollimageUrl = "/wp-content/uploads/sites/3/scrollImage";
+  const scrollimage = document
+    .getElementById("scrollImage")
+    .getElementsByTagName("img")[0];
+  const scrollBackgroundImage = document.getElementById("scrollImage");
+  var prevScrollImage;
+  var scrollImageSource;
 
-    var isInViewport = function (elem) {
-        var distance = elem.getBoundingClientRect();
-        return (
-            distance.top >= 100 &&
-            distance.left >= 0 &&
-            distance.bottom <= (window.innerHeight - 300 || document.documentElement.clientHeight - 300) &&
-            distance.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    };
+  var isInViewport = function (elem) {
+    var distance = elem.getBoundingClientRect();
+    return (
+      distance.top >= 100 &&
+      distance.left >= 0 &&
+      distance.bottom <=
+        (window.innerHeight - 300 ||
+          document.documentElement.clientHeight - 300) &&
+      distance.right <=
+        (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
 
-    function changeScrollImage(scrollImageSource) {
-        if (prevScrollImage != scrollImageSource) {
-            scrollimage.classList.add("transition");
-            setTimeout(function () {
-                scrollimage.srcset = scrollImageSource;
-                scrollimage.classList.remove("transition");
-                scrollimage.style.cssText += 'box-shadow: 0px 2px 18px 0px rgb(0 0 0 / 66%)';
-            }, 700); prevScrollImage = scrollImageSource;
-        }
+  function changeScrollImage(scrollImageSource) {
+    if (prevScrollImage != scrollImageSource) {
+      scrollimage.classList.add("transition");
+      setTimeout(function () {
+        scrollimage.srcset = scrollImageSource;
+        scrollimage.classList.remove("transition");
+        scrollimage.style.cssText +=
+          "box-shadow: 0px 2px 18px 0px rgb(0 0 0 / 66%)";
+      }, 700);
+      prevScrollImage = scrollImageSource;
     }
+  }
 
-
-    window.addEventListener('scroll', function (event) {
-        for (let i = 0; i < scrollItems.length; i++) {
-            scrollImageSource = scrollimageUrl + (i + 1) + ".jpg";
-            if (isInViewport(scrollItems[i])) {
-                changeScrollImage(scrollImageSource);
-            }
+  window.addEventListener(
+    "scroll",
+    function (event) {
+      for (let i = 0; i < scrollItems.length; i++) {
+        scrollImageSource = scrollimageUrl + (i + 1) + ".jpg";
+        if (isInViewport(scrollItems[i])) {
+          changeScrollImage(scrollImageSource);
         }
-    }, false);
-
+      }
+    },
+    false
+  );
 </script>
 
 <style>
-    .transition {
-        opacity: 0;
+  .transition {
+    opacity: 0;
+  }
 
-    }
+  #scrollImage img {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+  }
 
-    #scrollImage img {
-        -webkit-transition: opacity 1s ease-in-out;
-        -moz-transition: opacity 1s ease-in-out;
-        -o-transition: opacity 1s ease-in-out;
-        transition: opacity 1s ease-in-out;
-
-
-    }
-
-    #scrollImage {
-        /*background-image: url("/wp-content/uploads/sites/3/scrollImage1.jpg");*/
-        background-size: 30vw 45vh;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 25px 25px 25px 25px;
-        overflow: hidden;
-
-    }
+  #scrollImage {
+    /*background-image: url("/wp-content/uploads/sites/3/scrollImage1.jpg");*/
+    background-size: 30vw 45vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 25px 25px 25px 25px;
+    overflow: hidden;
+  }
 </style>
