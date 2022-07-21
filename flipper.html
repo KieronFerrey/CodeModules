@@ -53,8 +53,31 @@
     }
 </script>
 <style>
+    /*Flipper css */
+    .active p,
+    p {
+        transition-duration: .5s;
+        cursor: pointer
+    }
 
-/*Flipper css */
-.active p,p{transition-duration:.5s;cursor:pointer}.active,.flipper_text p{display:visible!important}#services_image{transition-duration:.5s}.active p{color:#FFF}.flipper_text p{color:#FFF!important}.inactive{display:none}
+    .active,
+    .flipper_text p {
+        display: visible !important
+    }
 
+    #services_image {
+        transition-duration: .5s
+    }
+
+    .active p {
+        color: #FFF
+    }
+
+    .flipper_text p {
+        color: #FFF !important
+    }
+
+    .inactive {
+        display: none
+    }
 </style>
